@@ -1,12 +1,27 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        Bienvenue, voici la liste des produits
+        
+                <h:form id="ListProduct">
+                    <h:dataTable id="dtProduct" var="product" value="#{listCatalog.getCatalog()}">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nom du produit" />
+                            </f:facet>
+                            <h:outputText id="personId" value="#{product.name}"/>
+                            <h:commandLink id="addProduct" value="#{product.id}" action="#{addProductBean.addProduct(product)}" />                
+                        </h:column>
+                    </h:dataTable>
+                 </h:form>
+        
+        
     </h:body>
 </html>
 
